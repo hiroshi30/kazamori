@@ -1,0 +1,38 @@
+cmake_minimum_required(VERSION 3.28 FATAL_ERROR)
+
+project(
+	kazamori_core
+	VERSION 0.0.1
+	LANGUAGES C
+)
+
+
+add_library(core STATIC)
+
+target_sources(core PRIVATE
+	src/library.c
+
+	src/data_set.c
+	src/full_connected.c
+
+	src/image_set.c
+	src/max_pooling.c
+	src/convolution.c
+
+	src/nn.c
+
+	src/data_set_print.c
+	src/full_connected_print.c
+
+	src/image_set_print.c
+	src/max_pooling_print.c
+	src/convolution_print.c
+)
+
+target_include_directories(core PUBLIC
+	src
+	include
+)
+
+target_compile_options(core PRIVATE -Wall -Wextra -Wpedantic -D Debug)
+target_compile_features(core PRIVATE c_std_23)
