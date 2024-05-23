@@ -1,0 +1,40 @@
+add_library(core SHARED)
+
+target_sources(core PRIVATE
+	src/knn.c
+	
+	src/library.c
+	src/data_set.c
+	src/full_connected.c
+	
+	src/image_set.c
+	src/max_pooling.c
+	src/convolution.c
+)
+
+if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+	target_sources(core PRIVATE
+		print/data_set_print.c
+		print/full_connected_print.c
+		print/image_set_print.c
+		print/max_pooling_print.c
+		print/convolution_print.c
+	)
+endif()
+
+target_include_directories(core PUBLIC
+	include
+	src
+)
+
+if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+	target_include_directories(core PUBLIC
+		print
+	)
+endif()
+
+target_compile_options(core PRIVATE -mwindows)
+set_target_properties(core PROPERTIES
+	RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_BINARY_DIR}/
+	RUNTIME_OUTPUT_DIRECTORY_RELEASE ${CMAKE_BINARY_DIR}/
+)

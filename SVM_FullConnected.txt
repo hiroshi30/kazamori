@@ -1,0 +1,1 @@
+4 2 5 2 4 Sigmoid Sigmoid Sigmoid NULL 1 0.150000 0.030000 MSE 
